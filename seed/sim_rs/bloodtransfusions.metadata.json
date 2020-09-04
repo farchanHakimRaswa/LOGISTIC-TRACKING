@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"sim_rs.bloodtransfusions"},{"v":{"$numberInt":"2"},"unique":true,"key":{"order_number":{"$numberInt":"1"}},"name":"order_number_1","ns":"sim_rs.bloodtransfusions","background":true}],"uuid":"bf6383471a3343e9b2636fa75a8f351f"}

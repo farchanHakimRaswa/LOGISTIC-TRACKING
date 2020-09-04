@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"sim_rs.drugs"}],"uuid":"3fd4f2b6457e40509cca6a3cb463a051"}

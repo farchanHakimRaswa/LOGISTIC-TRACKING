@@ -1,0 +1,92 @@
+version: "3.5"
+
+volumes:
+  mongo-keys-dev:
+    name: mongo-keys-dev
+  mongo-data-dev-0:
+    name: mongo-data-dev-0
+  mongo-data-dev-1:
+    name: mongo-data-dev-1
+  mongo-data-dev-2:
+    name: mongo-data-dev-2
+
+networks:
+  mongo-cluster:
+    name: mongo-cluster
+
+services:
+  mongo-initiator:
+    container_name: mongo-initiator
+    build:
+      context: ./config/mongo
+      dockerfile: Dockerfile
+    env_file: ./.env.database
+    environment:
+      MONGO1: mongo-primary:27017
+      MONGO2: mongo-worker-1:27017
+      MONGO3: mongo-worker-2:27017
+      REPLICASET: simrs_0
+    volumes:
+      - ./seed:/seed
+    depends_on:
+      - mongo-keys
+      - mongo-primary
+      - mongo-worker-1
+      - mongo-worker-2
+    networks:
+      mongo-cluster:
+
+  # Key Generator
+  mongo-keys:
+    image: depop/openssl-bats
+    volumes:
+      - mongo-keys-dev:/mongo-conf
+    command: 'bash -c "openssl rand -base64 741 > /mongo-conf/mongodb-keyfile; chmod 600 /mongo-conf/mongodb-keyfile; chown 999 /mongo-conf/mongodb-keyfile"'
+
+  # Primary
+  mongo-primary:
+    container_name: mongo-primary
+    image: mongo:latest
+    volumes:
+      - mongo-keys-dev:/opt/keyfile
+      - mongo-data-dev-0:/data/db
+    env_file: .env.database
+    ports:
+      - 27017:27017
+    command: "mongod --auth --keyFile /opt/keyfile/mongodb-keyfile --replSet simrs_0"
+    depends_on:
+      - mongo-keys
+    networks:
+      mongo-cluster:
+
+  # Worker 1
+  mongo-worker-1:
+    container_name: mongo-worker-1
+    image: mongo:latest
+    volumes:
+      - mongo-keys-dev:/opt/keyfile
+      - mongo-data-dev-1:/data/db
+    env_file: .env.database
+    ports:
+      - 27018:27017
+    command: "mongod --auth --keyFile /opt/keyfile/mongodb-keyfile --replSet simrs_0"
+    depends_on:
+      - mongo-keys
+    networks:
+      mongo-cluster:
+
+  # Worker 2
+  mongo-worker-2:
+    container_name: mongo-worker-2
+    image: mongo:latest
+    volumes:
+      - mongo-keys-dev:/opt/keyfile
+      - mongo-data-dev-2:/data/db
+    env_file: .env.database
+    ports:
+      - 27019:27017
+    command: "mongod --auth --keyFile /opt/keyfile/mongodb-keyfile --replSet simrs_0"
+    depends_on:
+      - mongo-keys
+    networks:
+      mongo-cluster:

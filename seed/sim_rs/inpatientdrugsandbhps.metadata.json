@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"sim_rs.inpatientdrugsandbhps"}],"uuid":"f2e7d5ab5c3c42a99575c080b845beb0"}

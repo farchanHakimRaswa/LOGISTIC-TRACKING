@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"sim_rs.orderpayments"},{"v":{"$numberInt":"2"},"unique":true,"key":{"invoice":{"$numberInt":"1"}},"name":"invoice_1","background":true,"ns":"sim_rs.orderpayments"}],"uuid":"e71e544c7c8144a0a2cf38d359bf392f"}

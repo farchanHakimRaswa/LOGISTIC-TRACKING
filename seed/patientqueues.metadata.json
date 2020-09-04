@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"sim_rs.patientqueues"},{"v":{"$numberInt":"2"},"unique":true,"key":{"registration_no":{"$numberInt":"1"}},"name":"registration_no_1","ns":"sim_rs.patientqueues","background":true}],"uuid":"e530394d666b4516ba623da34968df94"}

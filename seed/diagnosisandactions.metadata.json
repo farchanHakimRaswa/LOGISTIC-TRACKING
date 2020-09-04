@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"sim_rs.diagnosisandactions"}],"uuid":"d719fa77d9fd4add917b7d7c9a80ed6f"}

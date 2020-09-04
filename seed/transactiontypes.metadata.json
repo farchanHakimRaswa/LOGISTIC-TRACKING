@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"sim_rs.transactiontypes"}],"uuid":"1efbc35701cb4051a7da9f3b41caca8e"}

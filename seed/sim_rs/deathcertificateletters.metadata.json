@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"sim_rs.deathcertificateletters"}],"uuid":"46ee5b26f1e343ad8cffdbee5a3140a7"}

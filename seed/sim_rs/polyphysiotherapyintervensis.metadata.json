@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"sim_rs.polyphysiotherapyintervensis"}],"uuid":"f79928cf8a6e434289406e67ec48ec39"}

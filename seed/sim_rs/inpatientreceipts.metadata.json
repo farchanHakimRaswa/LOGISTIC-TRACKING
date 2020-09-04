@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"sim_rs.inpatientreceipts"}],"uuid":"dd7305a323f94d10bd947d76230e9f2e"}

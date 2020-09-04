@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"sim_rs.inventorytransactions"},{"v":{"$numberInt":"2"},"unique":true,"key":{"detail.bill":{"$numberInt":"1"}},"name":"detail.bill_1","ns":"sim_rs.inventorytransactions","background":true}],"uuid":"a667d3e2be9f4ad1bdaadf54317952db"}

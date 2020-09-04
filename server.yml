@@ -1,0 +1,6 @@
+apps:
+  - script: ./app/bin/www
+    name: production-backend
+    instances: max
+    exec_mode: cluster
+    env: { "NODE_ENV": "production" }

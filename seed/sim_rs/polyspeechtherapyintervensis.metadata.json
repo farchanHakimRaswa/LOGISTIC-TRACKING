@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"sim_rs.polyspeechtherapyintervensis"}],"uuid":"42c557480f0c441494dff0c5b5c3d327"}

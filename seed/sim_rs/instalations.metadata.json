@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"sim_rs.instalations"}],"uuid":"a14097c3cf6d4ba6a07b31e956ed03a3"}

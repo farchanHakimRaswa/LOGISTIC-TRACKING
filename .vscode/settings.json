@@ -1,0 +1,12 @@
+{
+  "git.ignoreLimitWarning": true,
+  "rest-client.environmentVariables": {
+    "$shared": {
+<<<<<<< HEAD
+      "auth": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlblN0YWZmIjp7ImlkIjoiNWUyYWM1YzkzYjg4MjlhNDU2N2I3YzlmIiwibmlwIjoiMjAyMC4wMS4wMDAyIiwibmFtZSI6IkhhciBLYXJvbGVrIFN1a2Fybm8sIEFwdC4iLCJyb2xlIjp7InByaW1hcnkiOiJkb2t0ZXIiLCJwb2x5X2lkIjoiNWQxYmE3NDNmOTE2MjUwY2QwMzcyZWVkIiwiaXNfd2FyZWhvdXNlIjpmYWxzZSwiaXNfcGhhcm1hY3kiOnRydWV9fSwiaWF0IjoxNTkzMDU2ODAyLCJleHAiOjE1OTMxNDMyMDJ9.ThAClgNh3Sj8Br6la8MhrZH4JigjqWXahFiiRjP3SPY"
+=======
+      "auth": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlblN0YWZmIjp7ImlkIjoiNWUyYWM1YzkzYjg4MjlhNDU2N2I3YzlmIiwibmlwIjoiMjAyMC4wMS4wMDAyIiwibmFtZSI6IkhhciBLYXJvbGVrIFN1a2Fybm8sIEFwdC4iLCJyb2xlIjp7InByaW1hcnkiOiJkb2t0ZXIiLCJwb2x5X2lkIjoiNWQxYmE3NDNmOTE2MjUwY2QwMzcyZWVkIiwiaXNfd2FyZWhvdXNlIjpmYWxzZSwiaXNfcGhhcm1hY3kiOnRydWV9fSwiaWF0IjoxNTkzNzUzNjM4LCJleHAiOjE1OTM4NDAwMzh9.PZ0KlNP9okjnAUAsXBbHEU9Y1bXm9XW-rNf1uTbkbSQ"
+>>>>>>> db387963ace2e965fa3c6c7218812570a96ca015
+    }
+  }
+}

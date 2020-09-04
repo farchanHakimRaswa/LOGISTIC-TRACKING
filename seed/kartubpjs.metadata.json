@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"sim_rs.kartubpjs"},{"v":{"$numberInt":"2"},"unique":true,"key":{"noKartu":{"$numberInt":"1"}},"name":"noKartu_1","ns":"sim_rs.kartubpjs","background":true}],"uuid":"64dd27bed92a4d36a3c60492d94d88d2"}

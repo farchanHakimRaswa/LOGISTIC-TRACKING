@@ -1,0 +1,138 @@
+version: "3.5"
+services:
+  frontend-webserver:
+    image: tamaduntech/frontend:0.0.1
+    container_name: neurovi-frontend-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+      - backend-webserver
+    networks:
+      production:
+
+  tarif-webserver:
+    image: tamaduntech/tarif:1.0
+    container_name: neurovi-tarif-nginx
+    restart: unless-stopped
+    ports:
+      - "88:80"
+    depends_on:
+      - api
+      - backend-webserver
+    networks:
+      production:
+
+  backend-webserver:
+    image: nginx:alpine
+    container_name: neurovi-backend-nginx
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    volumes:
+      - ./neurovi-backend/config/nginx:/etc/nginx/conf.d
+    depends_on:
+      - api
+    networks:
+      production:
+
+  api:
+    image: tamaduntech/backend:0.0.1
+    restart: unless-stopped
+    container_name: neurovi-api
+    environment:
+      NODE_ENV: production
+    volumes:
+      - ./neurovi-data/static:/app/app/static
+    depends_on:
+      - mongo-primary
+      - mongo-worker-1
+      - mongo-worker-2
+      - mongo-initiator
+    networks:
+      production:
+
+  mongo-initiator:
+    container_name: mongo-initiator
+    build:
+      context: ./neurovi-backend/config/mongo
+      dockerfile: Dockerfile
+    env_file: ./neurovi-backend/.env.database
+    environment:
+      MONGO1: mongo-primary:27017
+      MONGO2: mongo-worker-1:27017
+      MONGO3: mongo-worker-2:27017
+      REPLICASET: simrs_0
+    volumes:
+      - ./seed:/seed
+    depends_on:
+      - mongo-keys
+      - mongo-primary
+      - mongo-worker-1
+      - mongo-worker-2
+    networks:
+      production:
+
+  # Key Generator
+  mongo-keys:
+    image: depop/openssl-bats
+    volumes:
+      - mongo-keys:/mongo-conf
+    command: 'bash -c "openssl rand -base64 741 > /mongo-conf/mongodb-keyfile; chmod 600 /mongo-conf/mongodb-keyfile; chown 999 /mongo-conf/mongodb-keyfile"'
+
+  # Primary
+  mongo-primary:
+    container_name: mongo-primary
+    image: mongo:latest
+    volumes:
+      - mongo-keys:/opt/keyfile
+      - mongo-data-0:/data/db
+    env_file: ./neurovi-backend/.env.database
+    command: "mongod --auth --keyFile /opt/keyfile/mongodb-keyfile --replSet simrs_0"
+    depends_on:
+      - mongo-keys
+    networks:
+      production:
+
+  # Worker 1
+  mongo-worker-1:
+    container_name: mongo-worker-1
+    image: mongo:latest
+    volumes:
+      - mongo-keys:/opt/keyfile
+      - mongo-data-1:/data/db
+    env_file: ./neurovi-backend/.env.database
+    command: "mongod --auth --keyFile /opt/keyfile/mongodb-keyfile --replSet simrs_0"
+    depends_on:
+      - mongo-keys
+    networks:
+      production:
+
+  # Worker 2
+  mongo-worker-2:
+    container_name: mongo-worker-2
+    image: mongo:latest
+    volumes:
+      - mongo-keys:/opt/keyfile
+      - mongo-data-2:/data/db
+    env_file: ./neurovi-backend/.env.database
+    command: "mongod --auth --keyFile /opt/keyfile/mongodb-keyfile --replSet simrs_0"
+    depends_on:
+      - mongo-keys
+    networks:
+      production:
+
+networks:
+  production:
+    name: production
+
+volumes:
+  mongo-keys:
+    name: mongo-keys
+  mongo-data-0:
+    name: mongo-data-0
+  mongo-data-1:
+    name: mongo-data-1
+  mongo-data-2:
+    name: mongo-data-2
