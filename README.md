@@ -1,4 +1,4 @@
-# TESTING PROJECT
+# PRODUCT TRACKING
 This project Develop 4 model and controller to support costumer product tracking, including:
  1. Connote Model
  2. Customer Model
